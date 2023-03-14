@@ -1,0 +1,10 @@
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train: Pfad/zu/dataset/train #['images/klassifikation/tag_cvat_project/sort/split/train/overwater', 'images/klassifikation/tag_cvat_project/sort/split/train/underwater'] #split/train #[yolo-1280-single-dolphin/train/obj_train_data, yolo-1280-single-dolphin_2/train/obj_train_data]  # 118287 images [/data/datasets/annotation/yolo8x6-1280-obj-det/train, ...}
+val: Pfad/zu/dataset/val #['images/klassifikation/tag_cvat_project/sort/split/val/overwater', 'images/klassifikation/tag_cvat_project/sort/split/val/underwater'] #split/val #[yolo-1280-single-dolphin/val/obj_train_data, yolo-1280-single-dolphin_2/val/obj_train_data] # 5000 images
+test: Pfad/zu/dataset/test #['images/klassifikation/tag_cvat_project/sort/split/test/overwater', 'images/klassifikation/tag_cvat_project/sort/split/test/underwater'] #split/test #[yolo-1280-single-dolphin/test/obj_train_data, yolo-1280-single-dolphin_2/test/obj_train_data]
+#work/datasets/images/klassifikation/tag_cvat_project/split
+# number of classes
+nc: 2
+
+# class names
+names: ['under_water', 'over_water', 'straight']
