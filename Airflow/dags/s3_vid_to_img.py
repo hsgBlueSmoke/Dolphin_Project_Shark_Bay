@@ -52,7 +52,7 @@ with DAG("s3_s3_manifest", # Dag id
     def load_from_storage():
         object_to_load = []
         #for bucket in s3_load.buckets.all():
-        bucket_name = 'hslu-dolphin'
+        bucket_name = 'bucket_name' # setzte Bucket Name ein
         print('Bucket name: {}'.format(bucket_name))
         my_bucket = s3_load.Bucket(format(bucket_name))
         for my_bucket_object in my_bucket.objects.filter(Prefix='raw/video/2022.08.25'):
