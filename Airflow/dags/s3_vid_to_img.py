@@ -16,36 +16,20 @@ import json
 import hashlib
 
 # Create client with access key and secret key with specific region.
-#client_load = boto3.resource('s3',
-#                    endpoint_url='http://10.151.246.229:9000',
-#                    aws_access_key_id='w4O1jPO7NUCm6scI',
-#                    aws_secret_access_key='m1zIopUu6JA1aiuojcRzDhBGTEo3RrY1',
-#                    verify= False
-                    #config=Config(signature_version='s3v4'),
-                    #region_name='us-east-1'
-#                     )
 
-#client_write = boto3.client('s3',
-#                    endpoint_url='http://10.151.246.229:9000',
-#                    aws_access_key_id='w4O1jPO7NUCm6scI',
-#                    aws_secret_access_key='m1zIopUu6JA1aiuojcRzDhBGTEo3RrY1',
-#                    verify= False
-                    #config=Config(signature_version='s3v4'),
-                    #region_name='us-east-1'
-#                     )
 
 s3_load = boto3.resource('s3',
                     #endpoint_url='http://10.151.246.229:9000',
-                    aws_access_key_id='AKIAV3HEOGPZWDWJLZ2Z',
-                    aws_secret_access_key='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',
+                    aws_access_key_id='',
+                    aws_secret_access_key='',
                     verify= False,
                     #config=Config(signature_version='s3v4'),
                     region_name='eu-central-1'
                      )
 s3_write = boto3.client('s3',
                     #endpoint_url='http://10.151.246.229:9000',
-                    aws_access_key_id='AKIAV3HEOGPZWDWJLZ2Z',
-                    aws_secret_access_key='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',
+                    aws_access_key_id='',
+                    aws_secret_access_key='',
                     verify= False,
                     #config=Config(signature_version='s3v4'),
                     region_name='eu-central-1'
