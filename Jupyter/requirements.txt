@@ -1,0 +1,5 @@
+Pillow
+opencv-python
+boto3
+split-folders
+ultralytics
