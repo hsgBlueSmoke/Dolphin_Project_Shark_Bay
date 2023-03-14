@@ -1,0 +1,62 @@
+# hdfs3-parquet-sink
+
+connector.class=io.confluent.connect.hdfs3.Hdfs3SinkConnector
+confluent.topic.bootstrap.servers=kafka-1:19092
+flush.size=3
+schema.compatibility=BACKWARD
+tasks.max=1
+topics=GPS
+hdfs.url=hdfs://namenode:9000
+hive.metastore.uris=thrift://hive-metastore:9083
+value.converter.schema.registry.url=http://schema-registry-1:8081
+format.class=io.confluent.connect.hdfs3.parquet.ParquetFormat
+hive.integration=true
+confluent.topic.replication.factor=1
+name=hdfs3-parquet-sink
+value.converter=io.confluent.connect.avro.AvroConverter
+key.converter=org.apache.kafka.connect.converters.LongConverter
+
+# mqtt-source
+
+connector.class=com.datamountaineer.streamreactor.connect.mqtt.source.MqttSourceConnector
+tasks.max=1
+connect.mqtt.service.quality=0
+connect.mqtt.connection.keep.alive=1000
+connect.kafka.topic=GPS
+connect.mqtt.topics=zurich/toilette/Air
+connect.mqtt.converter.throw.on.error=true
+connect.mqtt.hosts=tcp://192.168.1.134:1883
+connect.mqtt.connection.timeout=1000
+name=mqtt-source
+connect.mqtt.connection.clean=true
+connect.mqtt.kcql=INSERT INTO  zurich SELECT * FROM zurich/toilette/Air
+connect.mqtt.client.id=tm-mqtt-connect-01
+
+# ElasticsearchSinkConnector
+
+connector.class=io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
+type.name=_doc
+tasks.max=1
+topics=GPS-avro-v1
+topic.index.map=GPS:GPS-index
+name=ElasticsearchSinkConnector
+connection.url=http://192.168.1.107:9200
+key.ignore=true
+key.converter=org.apache.kafka.connect.storage.StringConverter
+schema.ignore=false
+
+# Hdfs3SinkConnector
+
+connector.class=io.confluent.connect.hdfs3.Hdfs3SinkConnector
+confluent.topic.bootstrap.servers=kafka-1:19092
+flush.size=3
+tasks.max=1
+topics=GPS
+hdfs.url=hdfs://namenode:9000
+value.converter.schema.registry.url=http://schema-registry-1:8081
+format.class=io.confluent.connect.hdfs3.parquet.ParquetFormat
+confluent.topic.replication.factor=1
+partitioner.class=io.confluent.connect.storage.partitioner.FieldPartitioner
+name=Hdfs3SinkConnector
+value.converter=io.confluent.connect.avro.AvroConverter
+key.converter=org.apache.kafka.connect.converters.LongConverter
